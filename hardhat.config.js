@@ -1,8 +1,8 @@
-require("@nomiclabs/hardhat-waffle");
+require('@nomiclabs/hardhat-waffle');
 
 module.exports = {
-  solidity: "0.7.5",
+  solidity: '0.7.5',
   paths: {
-    artifacts: "./app/artifacts",
-  }
+    artifacts: './dapp/src/artifacts',
+  },
 };
