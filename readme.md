@@ -20,6 +20,15 @@ Compile the contracts using `npx hardhat compile`. The artifacts will be placed 
 
 ## Front-End
 
-To run the front-end application move into the `dapp` folder and run `yarn start` or `npm start`.
+To run the front-end application move into the `dapp` folder and run
+
+```
+yarn
+yarn start
+
+# or you can use npm
+npm install
+npm start
+```
 
 You can learn more about React [here](https://create-react-app.dev/).

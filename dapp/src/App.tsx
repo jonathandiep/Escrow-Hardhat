@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RouteComponentProps, Router } from '@reach/router'
+import { Container } from '@chakra-ui/react'
+
+import ExistingContract from './pages/existing-contracts'
+import NewContract from './pages/new-contract'
+import SearchContracts from './pages/search-contracts'
+
+const ExistingContractPage = (props: RouteComponentProps) => <ExistingContract />
+const NewContractPage = (props: RouteComponentProps) => <NewContract />
+const SearchContractPage = (props: RouteComponentProps) => <SearchContracts />
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container marginTop={5}>
+      <Router>
+        <ExistingContractPage path="/existing-contracts" />
+        <SearchContractPage path="/search-contracts" />
+        <NewContractPage path="/" />
+      </Router>
+    </Container>
+  )
 }
 
-export default App;
+export default App
