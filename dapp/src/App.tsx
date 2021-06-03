@@ -1,5 +1,5 @@
 import { RouteComponentProps, Router } from '@reach/router'
-import { Container } from '@chakra-ui/react'
+import { Button, Container, Flex, Heading, Spacer, useColorMode } from '@chakra-ui/react'
 
 import ExistingContract from './pages/existing-contracts'
 import NewContract from './pages/new-contract'
@@ -10,14 +10,25 @@ const NewContractPage = (props: RouteComponentProps) => <NewContract />
 const SearchContractPage = (props: RouteComponentProps) => <SearchContracts />
 
 function App() {
+  const { colorMode, toggleColorMode } = useColorMode()
+
   return (
-    <Container marginTop={5}>
-      <Router>
-        <ExistingContractPage path="/existing-contracts" />
-        <SearchContractPage path="/search-contracts" />
-        <NewContractPage path="/" />
-      </Router>
-    </Container>
+    <>
+      <Container marginTop={5}>
+        <Flex mb="5">
+          <Heading>Escrow App</Heading>
+          <Spacer />
+          <Button size="sm" onClick={toggleColorMode}>
+            Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+          </Button>
+        </Flex>
+        <Router>
+          <ExistingContractPage path="/existing-contracts" />
+          <SearchContractPage path="/search-contracts" />
+          <NewContractPage path="/" />
+        </Router>
+      </Container>
+    </>
   )
 }
 
