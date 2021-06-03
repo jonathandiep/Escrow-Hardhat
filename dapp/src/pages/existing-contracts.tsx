@@ -33,19 +33,21 @@ function ExistingContract() {
       </Heading>
       <Divider m="2" />
       {escrowContracts.length > 0 ? (
-        escrowContracts.map((escrowContract: any, index: number) => {
-          return (
-            <EscrowItem
-              key={index}
-              address={escrowContract.address}
-              depositor={escrowContract.depositor}
-              arbiter={escrowContract.arbiter}
-              beneficiary={escrowContract.beneficiary}
-              status={escrowContract.status}
-              balance={escrowContract.balance}
-            />
-          )
-        })
+        escrowContracts
+          .filter((escrowContract) => escrowContract)
+          .map((escrowContract: any, index: number) => {
+            return (
+              <EscrowItem
+                key={index}
+                address={escrowContract.address}
+                depositor={escrowContract.depositor}
+                arbiter={escrowContract.arbiter}
+                beneficiary={escrowContract.beneficiary}
+                status={escrowContract.status}
+                balance={escrowContract.balance}
+              />
+            )
+          })
       ) : (
         <div>No escrows saved</div>
       )}
