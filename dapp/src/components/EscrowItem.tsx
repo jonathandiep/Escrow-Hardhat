@@ -12,8 +12,15 @@ interface EscrowItemProps {
   balance: BigNumber
 }
 
-const provider = new providers.Web3Provider((window as any).ethereum)
-const signer = provider.getSigner()
+let provider: providers.Web3Provider
+let signer: providers.JsonRpcSigner
+
+try {
+  provider = new providers.Web3Provider((window as any).ethereum)
+  signer = provider.getSigner()
+} catch (err) {
+  console.error(err)
+}
 
 async function approveEscrow(address: string) {
   const contract = new Contract(address, Escrow.abi, signer)

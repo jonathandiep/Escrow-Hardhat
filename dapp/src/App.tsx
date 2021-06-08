@@ -12,6 +12,10 @@ const SearchContractPage = (props: RouteComponentProps) => <SearchContracts />
 function App() {
   const { colorMode, toggleColorMode } = useColorMode()
 
+  if (!(window as any).ethereum) {
+    return <Container>MetaMask or Web3 browser required</Container>
+  }
+
   return (
     <>
       <Container marginTop={5}>

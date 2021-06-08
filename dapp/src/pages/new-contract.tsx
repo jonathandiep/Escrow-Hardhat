@@ -6,7 +6,13 @@ import Escrow from '../artifacts/contracts/Escrow.sol/Escrow.json'
 
 import Navigation from '../components/Navigation'
 
-const provider = new providers.Web3Provider((window as any).ethereum)
+let provider: providers.Web3Provider
+
+try {
+  provider = new providers.Web3Provider((window as any).ethereum)
+} catch (err) {
+  console.error(err)
+}
 
 async function deploy(arbiter: string, beneficiary: string, value: BigNumber) {
   await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
