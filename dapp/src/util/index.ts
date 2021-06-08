@@ -1,6 +1,18 @@
 import { Contract, providers } from 'ethers'
 import EscrowABI from '../artifacts/contracts/Escrow.sol/Escrow.json'
 
+let provider: providers.Web3Provider
+let signer: providers.JsonRpcSigner
+
+try {
+  provider = new providers.Web3Provider((window as any).ethereum)
+  signer = provider.getSigner()
+} catch (err) {
+  console.error(err)
+}
+
+export { provider, signer }
+
 export async function lookupContract(address: string) {
   try {
     const provider = new providers.Web3Provider((window as any).ethereum)

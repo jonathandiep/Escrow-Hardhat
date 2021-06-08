@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Spacer } from '@chakra-ui/react'
-import { BigNumber, Contract, providers, utils } from 'ethers'
+import { BigNumber, Contract, utils } from 'ethers'
 
+import { signer } from '../util'
 import Escrow from '../artifacts/contracts/Escrow.sol/Escrow.json'
 
 interface EscrowItemProps {
@@ -10,16 +11,6 @@ interface EscrowItemProps {
   beneficiary: string
   status: number
   balance: BigNumber
-}
-
-let provider: providers.Web3Provider
-let signer: providers.JsonRpcSigner
-
-try {
-  provider = new providers.Web3Provider((window as any).ethereum)
-  signer = provider.getSigner()
-} catch (err) {
-  console.error(err)
 }
 
 async function approveEscrow(address: string) {
